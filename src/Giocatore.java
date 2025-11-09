@@ -22,7 +22,7 @@ public class Giocatore extends Thread{
 
     }
     public void comunica(){
-        System.out.println("sono il giocatore" + nome);
+        System.out.println("sono il giocatore " + nome);
     }
 
     /**
@@ -40,33 +40,31 @@ public class Giocatore extends Thread{
     public String getNome(){
         return nome;
     }
-    private void gioca() {
-        System.out.println( nome + " inserisci un numero ");
-        Scanner input=new Scanner(System.in);
+  public void gioca() {
+    
+        System.out.println(nome + " inserisci un numero ");
+        Scanner input = new Scanner(System.in);
         int num = input.nextInt();
-
-        System.out.println("ho scelto il numero  " + num + " sono " + nome);
-        gg.verifica(num);
-
-        }
+        System.out.println("ho scelto il numero " + num + " sono " + nome);
+        gg.verifica(num, this);
+    
+    }
 
 
     @Override
     public void run(){
         comunica();
+	
+       
+        gioca();
         try {
-            sleep(5000);
+            sleep(3000);
         } catch (InterruptedException e) {
             System.err.println("errore");
-        }
-        gioca();
-        //invoca ilmetodo run nella classe madre
+        } 
         super.run();
 
 
     }
 }
-
-
-
 
